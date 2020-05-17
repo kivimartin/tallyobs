@@ -1,12 +1,39 @@
 const OBSWebSocket = require('obs-websocket-js');
 var gpio = require("gpio");
 
-var gpio17 = gpio.export(17, {
+
+// cam1 RED
+var cam1red = gpio.export(17, {
     direction: gpio.DIRECTION.OUT,
     ready: function() {
     }
  });
-var gpio27 = gpio.export(27, {
+// cam1 GREEN
+var cam1green = gpio.export(27, {
+    direction: gpio.DIRECTION.OUT,
+    ready: function() {
+    }
+});
+// cam2 RED
+var cam2red = gpio.export(14, {
+    direction: gpio.DIRECTION.OUT,
+    ready: function() {
+    }
+ });
+// cam2 GREEN
+var cam2green = gpio.export(15, {
+    direction: gpio.DIRECTION.OUT,
+    ready: function() {
+    }
+});
+// cam3 RED
+var cam3red = gpio.export(23, {
+    direction: gpio.DIRECTION.OUT,
+    ready: function() {
+    }
+ });
+// cam3 GREEN
+var cam3green = gpio.export(24, {
     direction: gpio.DIRECTION.OUT,
     ready: function() {
     }
@@ -16,17 +43,19 @@ function switchRedLed(cam) {
     console.log('data: ' + cam);
     switch(cam.toString()) {
         case "cam1":
-            gpio17.set();
-            gpio27.set(0);
-
+            cam1red.set();
+            cam2red.set(0)
+            cam3red.set(0)
             break;
         case "cam2":
-            gpio17.set(0);
-
+            cam1red.set(0);
+            cam2red.set();
+            cam3red.set(0);
             break;
         case "cam3":
-            gpio17.set(0);
-
+            cam1red.set(0);
+            cam2red.set(0);
+            cam3red.set();
             break;
     }
 
@@ -36,16 +65,19 @@ function switchGreenLed(cam) {
     console.log('data: ' + cam);
     switch(cam.toString()) {
         case "cam1":
-            gpio27.set();
-            gpio17.set(0);
+            cam1green.set();
+            cam2green.set(0);
+            cam3green.set(0);
             break;
         case "cam2":
-            gpio27.set(0);
-
+            cam1green.set(0);
+            cam2green.set();
+            cam3green.set(0);
             break;
         case "cam3":
-            gpio27.set(0);
-
+            cam1green.set(0);
+            cam2green.set(0);
+            cam3green.set();
             break;
     }
 
