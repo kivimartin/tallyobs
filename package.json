@@ -1,0 +1,25 @@
+{
+  "name": "tallyOBS",
+  "version": "0.0.1",
+  "description": "A simple OBS websocket to LED",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "tally",
+    "obs"
+  ],
+  "author": "Martin Kivi <martin@kivi.nu>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/",
+  "dependencies": {
+    "obs-websocket-js": "*",
+    "gpio": "*"
+  }
+}
