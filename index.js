@@ -85,7 +85,7 @@ function switchGreenLed(cam) {
 
 const obs = new OBSWebSocket();
 obs.connect({
-        address: '192.168.250.105:4444',
+        address: 'obs1.cloud1.se:4444',
         password: '$up3rSecretP@ssw0rd'
     })
     .then(() => {
