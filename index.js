@@ -83,6 +83,29 @@ function switchGreenLed(cam) {
 
 }
 
+function allREDon() {
+    cam1red.set();
+    cam2red.set();
+    cam3red.set();
+}
+function allREDoff() {
+    cam1red.set(0);
+    cam2red.set(0);
+    cam3red.set(0);
+}
+
+function allGREENon() {
+    cam1green.set();
+    cam2green.set();
+    cam3green.set();
+}
+function allGREENoff() {
+    cam1green.set(0);
+    cam2green.set(0);
+    cam3green.set(0);
+}
+
+
 const obs = new OBSWebSocket();
 obs.connect({
         address: 'obs1.cloud1.se:4444',
@@ -90,13 +113,16 @@ obs.connect({
     })
     .then(() => {
         console.log(`Success! We're connected & authenticated.`);
- 
+        allGREENon();
+        setTimeout(allGREENoff, 3000);  
     })
     .then(data => {
  
     })
     .catch(err => { // Promise convention dicates you have a catch on every chain.
         console.log(err);
+        allREDon();
+        setTimeout(allREDoff, 3000);
     });
  
 obs.on('SwitchScenes', data => {
@@ -115,4 +141,6 @@ obs.on('PreviewSceneChanged', data => {
 // You must add this handler to avoid uncaught exceptions.
 obs.on('error', err => {
     console.error('socket error:', err);
+    allREDon();
+    setTimeout(allREDoff, 3000);
 });
